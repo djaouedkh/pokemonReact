@@ -7,7 +7,13 @@ const usePokemons = () => {
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
     useEffect(() => {
-        setPokemons(POKEMONS);
+        // setPokemons(POKEMONS);
+        // on remplace la ligne au dessus par un appel à une API
+        fetch('http://localhost:3001/pokemons')
+        .then(res => res.json())
+        .then((pokemons) => {
+            setPokemons(pokemons)
+        })
     }, []);
 
     return pokemons;

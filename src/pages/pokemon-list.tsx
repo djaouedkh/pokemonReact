@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-// import Pokemon from '../models/pokemon';
-// import POKEMONS from '../models/mock-pokemon';
+import Pokemon from '../models/pokemon';
 import PokemonCard from '../components/pokemon-card';
 import usePokemon from '../hooks/pokemon.hook';
+import PokemonService from '../services/pokemon-service';
   
 // HOOKS
 // permet de gerer la valeur d'une variable dynamiquement et de gerer son cycle de vie
@@ -14,7 +14,14 @@ import usePokemon from '../hooks/pokemon.hook';
 
 const PokemonList: FunctionComponent = () => {
 
-    const pokemons = usePokemon(); // on utilise le hook personalisé pour gerer l'etat initiale et son update
+    // const pokemons = usePokemon(); // on utilise le hook personalisé pour gerer l'etat initiale et son update, cela sert a factoriser un hook utiliser plusieur fois
+    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+    useEffect(() => {
+        // setPokemons(POKEMONS);
+        // // on remplace la ligne au dessus par un appel à une API qui se trouve dans le fichier pokemon-service, qui possède des methode static donc apellable sans instancier d'objet
+        PokemonService.getPokemons().then(pokemons => setPokemons(pokemons));
+    }, []);
   
     return (
         <div>

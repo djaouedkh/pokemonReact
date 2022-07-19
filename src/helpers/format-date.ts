@@ -1,5 +1,5 @@
 // Hooks personnalisés, permet de faire un traitement sur une propriété
-const formatDate = (date: Date): string => {
+const formatDate = (date: Date = new Date()): string => {
     return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
 }
 
