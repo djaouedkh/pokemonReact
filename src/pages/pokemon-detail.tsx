@@ -1,9 +1,10 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import Pokemon from '../models/pokemon';
-import POKEMONS from '../models/mock-pokemon';
+// import POKEMONS from '../models/mock-pokemon';
 import formatDate from '../helpers/format-date';
 import formatType from '../helpers/format-type';
+import Loader from '../components/loader';
 import PokemonService from '../services/pokemon-service';
 
 type Params = { id: string }; // defini un type nommé Params qui correspondra à l'id du pokemon dans l'url
@@ -58,8 +59,8 @@ const PokemonDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }
                                             ))}</td> 
                                         </tr> 
                                         <tr> 
-                                            <td>Date de création</td> 
-                                            <td>{formatDate(pokemon.created)}</td> 
+                                            <td>Date de création</td>
+                                            <td>{formatDate()}</td> 
                                         </tr>
                                     </tbody>
                                 </table>
@@ -72,7 +73,7 @@ const PokemonDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }
                 </div>
             </div>
         ) : (
-            <h4 className="center">Aucun pokémon à afficher !</h4>
+            <h4 className="center"><Loader /></h4>
         )}
         </div>
     );

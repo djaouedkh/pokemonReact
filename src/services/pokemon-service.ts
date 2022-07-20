@@ -18,9 +18,34 @@ export default class PokemonService {
     static updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
         return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
             method: 'PUT', 
-            body: JSON.stringify(pokemon), 
+            body: JSON.stringify(pokemon), // JSON.stringify transforme un objet en une string
+            headers: {'Content-Type': 'application/json'} // preciser quel genre de donnée en envoie à l'api
+        })
+        .then(response => response.json())
+        .catch(error => this.handleError(error));
+    }
+
+    static deletePokemon(pokemon: Pokemon): Promise<{}> {
+        return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
+            method: 'DELETE', 
+            headers: {'Content-Type': 'application/json'} // preciser quel genre de donnée en envoie à l'api
+        })
+        .then(response => response.json())
+        .catch(error => this.handleError(error));
+    }
+
+    static addPokemon(pokemon: Pokemon): Promise<Pokemon> {
+        return fetch(`http://localhost:3001/pokemons`, {
+            method: 'POST', 
+            body: JSON.stringify(pokemon),
             headers: {'Content-Type': 'application/json'}
         })
+        .then(response => response.json())
+        .catch(error => this.handleError(error));
+    }
+
+    static searchPokemon(term: string): Promise<Pokemon[]> {
+        return fetch(`http://localhost:3001/pokemons?q=${term}`)
         .then(response => response.json())
         .catch(error => this.handleError(error));
     }

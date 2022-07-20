@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import Pokemon from "../models/pokemon";
-import POKEMONS from "../models/mock-pokemon";
+// import POKEMONS from "../models/mock-pokemon";
 
 // hook personnalisé, ce hook peut etre utilisé sur tous les composants qui utilise une liste de pokemon
 const usePokemons = () => {

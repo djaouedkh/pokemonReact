@@ -3,6 +3,8 @@ import Pokemon from '../models/pokemon';
 import PokemonCard from '../components/pokemon-card';
 import usePokemon from '../hooks/pokemon.hook';
 import PokemonService from '../services/pokemon-service';
+import { Link } from 'react-router-dom';
+import PokemonSearch from '../components/pokemon-search';
   
 // HOOKS
 // permet de gerer la valeur d'une variable dynamiquement et de gerer son cycle de vie
@@ -28,11 +30,15 @@ const PokemonList: FunctionComponent = () => {
             <h1 className="center">Pokédex</h1>
             <div className="container"> 
                 <div className="row"> 
+                    <PokemonSearch/>
                     {pokemons.map(pokemon => (
                         // pokemon={pokemon} = permet de passet au composant PokemonCard l'objet pokemon, et ce dernier se chargera de traiter ses infos etc
                         <PokemonCard key={pokemon.id} pokemon={pokemon} /* background="antiquewhite"*//> // le omposant PokemonCard peut avoir une props background
                     ))}
                 </div>
+                <Link className='btn-floating btn-large waves-effect waves-light red z-depth-3' style={{position: 'fixed', bottom: '25px', right: '25px'}} to="/pokemon/add">
+                    <i className='material-icons'>add</i>
+                </Link>
             </div>
         </div> 
     );
