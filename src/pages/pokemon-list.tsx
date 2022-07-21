@@ -19,6 +19,7 @@ const PokemonList: FunctionComponent = () => {
     // const pokemons = usePokemon(); // on utilise le hook personalisé pour gerer l'etat initiale et son update, cela sert a factoriser un hook utiliser plusieur fois
     const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
+    // useEffect s'active lorsque le COMPOSANTS est monté
     useEffect(() => {
         // setPokemons(POKEMONS);
         // // on remplace la ligne au dessus par un appel à une API qui se trouve dans le fichier pokemon-service, qui possède des methode static donc apellable sans instancier d'objet
