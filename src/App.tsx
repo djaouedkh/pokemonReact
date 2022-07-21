@@ -36,5 +36,3 @@ const App: FunctionComponent = () => {
 }
   
 export default App;
-
-// minute tuto 5.31 !
