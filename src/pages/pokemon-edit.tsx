@@ -13,7 +13,7 @@ const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) 
     
     const [pokemon, setPokemon] = useState<Pokemon|null>(null);
 
-    // on recu le bon pokemon de la liste grace à l'id
+    // on recup le bon pokemon de la liste grace à l'id
     useEffect(() => {
         PokemonService.getPokemon(+match.params.id).then(pokemon => setPokemon(pokemon));
     }, [match.params.id]);
